@@ -6,7 +6,7 @@ export default function Navbar() {
             {/*Pongo el nombre del navbar*/}
             <h1 className="font-bold text-xl">Navbar</h1>
 
-            {/*Creo los enlaces de navegacion pero como ahorita no tengo datos para mostrar, dejo /*/}
+            {/*Creo los enlaces de navegacion pero como ahorita no tengo datos para mostrar, dejo / o sea q todos llevan al inicio xd*/}
             <div className="flex gap-5">
                 <a href="/">Home</a>
                 <a href="/">Features</a>
