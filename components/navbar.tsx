@@ -1,5 +1,12 @@
+"use client";
+
+import { useState } from "react";
+
 //Creo el componente Navbar
 export default function Navbar() {
+    const [search, setSearch] = useState("");
+    const [error, setError] = useState("");
+
     return (
         <nav className="flex items-center justify-between bg-gray-800 text-white p-4">
 
@@ -15,16 +22,35 @@ export default function Navbar() {
             </div>
 
             {/*Creo la cajita de busqueda*/}
-            <div className="flex gap-2">
-                <input
-                    type="text"
-                    placeholder="Search"
-                    className="bg-white text-black p-2 rounded"
-                />
+            <div className="flex flex-col gap-1">
+                <div className="flex gap-2">
+                    <input
+                        type="text"
+                        placeholder="Search"
+                        value={search}
+                        onChange={(event) => {
+                            setSearch(event.target.value);
+                            if (event.target.value.trim()) {
+                                setError("");
+                            }
+                        }}
+                        onBlur={() => {
+                            setError(search.trim() ? "" : "Este campo es obligatorio.");
+                        }}
+                        aria-invalid={Boolean(error)}
+                        aria-describedby={error ? "search-error" : undefined}
+                        className="bg-white text-black p-2 rounded"
+                    />
 
-                <button className="border border-cyan-500 text-cyan-400 px-3 rounded">
-                    Search
-                </button>
+                    <button className="border border-cyan-500 text-cyan-400 px-3 rounded">
+                        Search
+                    </button>
+                </div>
+                {error && (
+                    <p id="search-error" role="alert" className="text-red-300">
+                        {error}
+                    </p>
+                )}
             </div>
 
         </nav>
