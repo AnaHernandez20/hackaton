@@ -30,6 +30,11 @@ export default function Reto4Page() {
             setSegundos((anterior) => anterior + 1);
         }, 1000); //cada 1000 milisegundos o sea cada segundo tiene que aumentar el estado segundos xd
 
+        //tiene que retornar esto porque por eso estaba todo loco
+        //esta funcion lo que hace es que cuando le doy que pare el cronometro se quede quieto
+        //por lo que busqué si uno pone esto ya no se enloquece jsdaj
+        return () => clearInterval(intervalo);
+
     }, [contando]); //esta parte es re importante porque es la que hace que
     //el useEffect se ejecute cada vez que el estado contando cambia, si no lo pongo, el cronometro no funciona como me pasó antes 
     //aqui le digo a mi bro useEffect vuelve a ejecutar esta lógica cuando cambie contando
